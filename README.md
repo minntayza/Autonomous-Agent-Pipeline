@@ -1,4 +1,4 @@
-# 🧠 The Quantum Oracle (Autonomous Agent Pipeline)
+#  The Quantum Oracle (Autonomous Agent Pipeline)
 
 A highly polished, client-side, 5-agent autonomous reasoning system built with **Vanilla JavaScript** and powered by the **Gemini API**. It implements a self-correction loop, local semantic memory, strict structured outputs, and real-time streaming—all natively in the browser.
 
@@ -24,7 +24,7 @@ A highly polished, client-side, 5-agent autonomous reasoning system built with *
 - **Database:** IndexedDB (Local Vector Store)
 - **Dependencies:** `marked` (Markdown parsing), `dompurify` (Sanitization)
 
-## 🚀 Getting Started
+##  Getting Started
 
 1. Clone the repository:
    ```bash
@@ -45,7 +45,7 @@ A highly polished, client-side, 5-agent autonomous reasoning system built with *
 4. Open `http://localhost:5173/` in your browser.
 5. Enter your **Gemini API Key** in the left sidebar to activate the system.
 
-## 🔮 Future Upgrades
+##  Future Upgrades
 
 To take this from a prototype to production:
 - Replace the Wikipedia mock with a real search API (Tavily, Google Custom Search).
