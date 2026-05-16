@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic AI Pipeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Sidebar Settings -->
+      <aside id="sidebar" class="glass-panel">
+        <div class="sidebar-header">
+          <h2><span class="icon">✨</span> System Config</h2>
+        </div>
+        <div class="settings-group">
+          <label for="api-key">Gemini API Key</label>
+          <input type="password" id="api-key" placeholder="Enter API Key (required)" />
+        </div>
+        <div class="settings-group">
+          <label for="model-select">Model Selection</label>
+          <select id="model-select">
+            <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+            <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
+          </select>
+        </div>
+        <div class="settings-footer">
+          <button id="clear-btn" class="secondary-btn">Clear State</button>
+        </div>
+      </aside>
+
+      <!-- Main Interaction Area -->
+      <main id="main-chat">
+        <header class="chat-header">
+          <h1>Cognitive Pipeline</h1>
+          <p class="subtitle">5-Agent Autonomous Reasoning System</p>
+        </header>
+
+        <div id="chat-history" class="chat-history">
+          <div class="welcome-message">
+            <div class="pulse-ring"></div>
+            <h3>System Ready</h3>
+            <p>Waiting for query to initialize autonomous reasoning pipeline...</p>
+          </div>
+        </div>
+
+        <!-- Human-in-the-loop checkpoint panel -->
+        <div id="human-checkpoint" class="hidden">
+          <div class="checkpoint-header">
+            <span class="icon">✋</span> <h3>Human Checkpoint</h3>
+          </div>
+          <p>The Critic has approved the response. Review before formatting:</p>
+          <textarea id="checkpoint-editor"></textarea>
+          <div class="checkpoint-actions">
+            <button id="btn-approve" class="primary-btn">Approve & Format</button>
+            <button id="btn-reject" class="secondary-btn">Reject & Restart</button>
+          </div>
+        </div>
+
+        <div class="input-area">
+          <form id="query-form">
+            <textarea id="query-input" placeholder="Ask a complex query requiring deep research and synthesis..." rows="1"></textarea>
+            <button type="submit" id="send-btn" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </main>
+
+      <!-- Trace Observability Panel -->
+      <aside id="trace-panel" class="glass-panel">
+        <div class="trace-header">
+          <h2><span class="icon">👁️</span> Agent Trace</h2>
+          <div class="status-indicator">
+            <span id="pipeline-status-dot" class="dot idle"></span>
+            <span id="pipeline-status-text">Idle</span>
+          </div>
+        </div>
+        
+        <div id="agent-nodes" class="agent-nodes">
+          <div class="agent-node" id="node-planner">
+            <div class="node-icon">🧠</div>
+            <div class="node-content">
+              <h4>Planner</h4>
+              <p class="node-status">Pending</p>
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div class="agent-node" id="node-researcher">
+            <div class="node-icon">🔍</div>
+            <div class="node-content">
+              <h4>Researcher</h4>
+              <p class="node-status">Pending</p>
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div class="agent-node" id="node-synthesizer">
+            <div class="node-icon">✍️</div>
+            <div class="node-content">
+              <h4>Synthesizer</h4>
+              <p class="node-status">Pending</p>
+            </div>
+          </div>
+          <div class="connector loop-connector">
+            <span class="retry-badge hidden" id="retry-badge">Retry 0/3</span>
+          </div>
+          <div class="agent-node" id="node-critic">
+            <div class="node-icon">⚖️</div>
+            <div class="node-content">
+              <h4>Critic</h4>
+              <p class="node-status">Pending</p>
+              <div class="score-display hidden" id="critic-score">
+                <span class="score-val">0</span>/100
+              </div>
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div class="agent-node" id="node-formatter">
+            <div class="node-icon">✨</div>
+            <div class="node-content">
+              <h4>Formatter</h4>
+              <p class="node-status">Pending</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="trace-logs">
+          <h3>Log Stream</h3>
+          <div id="log-container" class="log-container">
+            <div class="log-entry system">System initialized. Awaiting API Key.</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
